@@ -138,7 +138,10 @@ fun CadastrarProdutoScreen(onRegisterComplete: () -> Unit) {
                         .height(48.dp),
                     shape = RoundedCornerShape(12.dp)
                 ) {
-                    Text("Cadastrar", fontSize = 16.sp)
+                    Text(
+                        "Cadastrar", fontSize = 16.sp,
+                        color = MaterialTheme.colorScheme.secondary
+                    )
                 }
             }
         }

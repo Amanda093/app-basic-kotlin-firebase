@@ -61,13 +61,6 @@ fun ListarProdutosScreen(onBack: () -> Unit) {
         onDispose { registration?.remove() }
     }
 
-    val gradient = Brush.verticalGradient(
-        colors = listOf(
-            MaterialTheme.colorScheme.primary,
-            MaterialTheme.colorScheme.primaryContainer
-        )
-    )
-
     Scaffold(
         topBar = {
             TopAppBar(
@@ -79,13 +72,13 @@ fun ListarProdutosScreen(onBack: () -> Unit) {
                 }
             )
         },
-        modifier = Modifier.background(brush = gradient)
     ) { innerPadding ->
         LazyColumn(
             contentPadding = innerPadding,
             modifier = Modifier
                 .fillMaxSize()
-                .background(brush = gradient)
+                .background(MaterialTheme.colorScheme.tertiary),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             items(produtos, key = { it.id }) { produto ->
                 Card(
@@ -204,7 +197,6 @@ fun ListarProdutosScreen(onBack: () -> Unit) {
         )
     }
 }
-
 data class Produto(
     val id: String = "",
     val nome: String,

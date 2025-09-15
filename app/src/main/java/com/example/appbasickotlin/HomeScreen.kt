@@ -91,9 +91,9 @@ fun HomeScreen(
         // card
         Card(
             modifier = Modifier
-                .padding(top = 80.dp, bottom = 40.dp)
+                .padding(16.dp)
                 .fillMaxWidth(0.9f)
-                .fillMaxSize(),
+                .wrapContentHeight(),
             shape = RoundedCornerShape(24.dp),
             elevation = CardDefaults.cardElevation(12.dp)
         ) {
@@ -109,14 +109,58 @@ fun HomeScreen(
                     textAlign = TextAlign.Center
                 )
 
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(25.dp))
 
-                Text(
-                    text = "Use o menu no canto superior direito para navegar.",
-                    fontSize = 16.sp,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    textAlign = TextAlign.Center
-                )
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    // cadastrar produto
+                    Button(
+                        onClick = { onCadastrarProduto() },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(48.dp),
+                        shape = RoundedCornerShape(12.dp)
+                    ) {
+                        Text(
+                            "Cadastrar produtos", fontSize = 16.sp,
+                            color = MaterialTheme.colorScheme.secondary
+                        )
+                    }
+
+                    Spacer(modifier = Modifier.height(8.dp))
+
+                    // listar
+                    Button(
+                        onClick = { onListarProdutos() },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(48.dp),
+                        shape = RoundedCornerShape(12.dp)
+                    ) {
+                        Text(
+                            "Listar", fontSize = 16.sp,
+                            color = MaterialTheme.colorScheme.secondary
+                        )
+                    }
+
+                    Spacer(modifier = Modifier.height(8.dp))
+
+                    // deslogar
+                    OutlinedButton(
+                        onClick = { onLogout() },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(48.dp),
+                        shape = RoundedCornerShape(12.dp)
+                    ) {
+                        Text(
+                            "Deslogar", fontSize = 16.sp,
+                            color = MaterialTheme.colorScheme.error
+                        )
+                    }
+                }
             }
         }
     }
