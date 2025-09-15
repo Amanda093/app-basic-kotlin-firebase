@@ -27,19 +27,14 @@ fun HomeScreen(
 ) {
     var menuExpanded by remember { mutableStateOf(false) }
 
-    val gradient = Brush.verticalGradient(
-        colors = listOf(
-            MaterialTheme.colorScheme.primary,
-            MaterialTheme.colorScheme.primaryContainer
-        )
-    )
-
-    Box(
+    Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(brush = gradient),
-        contentAlignment = Alignment.TopCenter
+            .background(MaterialTheme.colorScheme.tertiary),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
     ) {
+        // menu
         Column(
             horizontalAlignment = Alignment.End,
             modifier = Modifier
@@ -85,6 +80,15 @@ fun HomeScreen(
             }
         }
 
+        // logo
+        Image(
+            painter = painterResource(id = R.drawable.ic_logo),
+            contentDescription = "Logotipo do App",
+            modifier = Modifier
+                .width(120.dp)
+        )
+
+        // card
         Card(
             modifier = Modifier
                 .padding(top = 80.dp, bottom = 40.dp)
@@ -97,14 +101,6 @@ fun HomeScreen(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier.padding(24.dp)
             ) {
-                Image(
-                    painter = painterResource(id = R.drawable.ic_logo),
-                    contentDescription = "Logo",
-                    modifier = Modifier
-                        .height(80.dp)
-                        .padding(bottom = 16.dp)
-                )
-
                 Text(
                     text = "Bem-vindo, $userName!",
                     fontSize = 24.sp,

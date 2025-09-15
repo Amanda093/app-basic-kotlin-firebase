@@ -11,6 +11,7 @@ import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.*
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -37,19 +38,22 @@ fun RegisterScreen(onRegisterComplete: () -> Unit) {
 
     val context = LocalContext.current
 
-    val gradient = Brush.verticalGradient(
-        colors = listOf(
-            MaterialTheme.colorScheme.primary,
-            MaterialTheme.colorScheme.primaryContainer
-        )
-    )
-
-    Box(
+    Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(brush = gradient),
-        contentAlignment = Alignment.Center
+            .background(MaterialTheme.colorScheme.tertiary),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
     ) {
+        // logo
+        Image(
+            painter = painterResource(id = R.drawable.ic_logo),
+            contentDescription = "Logotipo do App",
+            modifier = Modifier
+                .width(120.dp)
+        )
+
+        // card
         Card(
             modifier = Modifier
                 .padding(16.dp)
@@ -62,13 +66,6 @@ fun RegisterScreen(onRegisterComplete: () -> Unit) {
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier.padding(24.dp)
             ) {
-                Image(
-                    painter = painterResource(id = R.drawable.ic_logo),
-                    contentDescription = "Logo",
-                    modifier = Modifier
-                        .height(80.dp)
-                        .padding(bottom = 16.dp)
-                )
 
                 Text(
                     text = "Cadastro",
@@ -174,7 +171,10 @@ fun RegisterScreen(onRegisterComplete: () -> Unit) {
                         .height(48.dp),
                     shape = RoundedCornerShape(12.dp)
                 ) {
-                    Text("Cadastrar", fontSize = 16.sp)
+                    Text(
+                        "Cadastrar", fontSize = 16.sp,
+                        color = MaterialTheme.colorScheme.primary
+                    )
                 }
 
                 Spacer(modifier = Modifier.height(12.dp))
