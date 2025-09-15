@@ -24,6 +24,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.appbasickotlin.R
+import com.example.appbasickotlin.components.Dialog
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.firestore.FirebaseFirestore
@@ -35,6 +36,7 @@ fun RegisterScreen(onRegisterComplete: () -> Unit) {
     var password by remember { mutableStateOf("") }
     var confirmPassword by remember { mutableStateOf("") }
     var loading by remember { mutableStateOf(false) }
+    var showSuccessDialog by remember { mutableStateOf(false) }
 
     val context = LocalContext.current
 
@@ -145,7 +147,6 @@ fun RegisterScreen(onRegisterComplete: () -> Unit) {
                                         .setDisplayName(username)
                                         .build()
                                     user?.updateProfile(profileUpdates)?.addOnCompleteListener {
-                                        // Salva o usuário no Firestore
                                         val userId = user.uid
                                         val userMap = hashMapOf(
                                             "username" to username,
@@ -173,7 +174,7 @@ fun RegisterScreen(onRegisterComplete: () -> Unit) {
                 ) {
                     Text(
                         "Cadastrar", fontSize = 16.sp,
-                        color = MaterialTheme.colorScheme.primary
+                        color = MaterialTheme.colorScheme.secondary
                     )
                 }
 

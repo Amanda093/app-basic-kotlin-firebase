@@ -34,52 +34,6 @@ fun HomeScreen(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        // menu
-        Column(
-            horizontalAlignment = Alignment.End,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp)
-        ) {
-            Box {
-                IconButton(onClick = { menuExpanded = true }) {
-                    Icon(
-                        imageVector = Icons.Default.MoreVert,
-                        contentDescription = "Menu",
-                        tint = MaterialTheme.colorScheme.onPrimary
-                    )
-                }
-
-                DropdownMenu(
-                    expanded = menuExpanded,
-                    onDismissRequest = { menuExpanded = false }
-                ) {
-                    DropdownMenuItem(
-                        text = { Text("Cadastrar Produto") },
-                        onClick = {
-                            menuExpanded = false
-                            onCadastrarProduto()
-                        }
-                    )
-                    DropdownMenuItem(
-                        text = { Text("Listar Produtos") },
-                        onClick = {
-                            menuExpanded = false
-                            onListarProdutos()
-                        }
-                    )
-                    Divider()
-                    DropdownMenuItem(
-                        text = { Text("Deslogar") },
-                        onClick = {
-                            menuExpanded = false
-                            onLogout()
-                        }
-                    )
-                }
-            }
-        }
-
         // logo
         Image(
             painter = painterResource(id = R.drawable.ic_logo),
@@ -129,7 +83,7 @@ fun HomeScreen(
                         )
                     }
 
-                    Spacer(modifier = Modifier.height(8.dp))
+                    Spacer(modifier = Modifier.height(10.dp))
 
                     // listar
                     Button(
@@ -145,7 +99,7 @@ fun HomeScreen(
                         )
                     }
 
-                    Spacer(modifier = Modifier.height(8.dp))
+                    Spacer(modifier = Modifier.height(10.dp))
 
                     // deslogar
                     OutlinedButton(
